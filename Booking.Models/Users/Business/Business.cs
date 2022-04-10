@@ -8,7 +8,7 @@ namespace Booking.Models.Business
         public string BusinessName { get; set; }
         public string Description { get; set; }
         public string PasswordHash { get; set; }
-        public bool isConfirmed { get; set; }
+        public bool isConfirm { get; set; }
         public DateTime RegistrationDate { get; set; }
         public DateTime WorkDayStartTime { get; set; }
         public DateTime WorkDayEndTime { get; set; }

@@ -9,8 +9,8 @@ namespace Booking.DataAccess
     {
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
-            Database.EnsureCreated();
-            //Database.Migrate();
+            //Database.EnsureCreated();
+            Database.Migrate();
         }
 
         #region DbSets
@@ -31,6 +31,15 @@ namespace Booking.DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+            var superAdmin = new Admin
+            {
+                Id = Guid.Parse("9a8e2f25-b0f1-4b47-9f2f-a9d6e43b24ec"),
+                Login = "dev",
+                PasswordHash = "123456",
+                Role = AdminRole.SuperAdmin
+            };
+            modelBuilder.Entity<Admin>().HasData(superAdmin);
+
             var user = new User
             {
                 Id = Guid.Parse("25173041-7745-485e-a025-440c53de55f5"),
@@ -42,6 +51,7 @@ namespace Booking.DataAccess
                 IsConfirmed = true,
                 Rating = 0,
             };
+
             modelBuilder.Entity<User>().HasData(user);
             modelBuilder.Entity<User>()
             .HasIndex(u => u.Email)
