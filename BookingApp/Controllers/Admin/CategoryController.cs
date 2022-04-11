@@ -127,6 +127,7 @@ namespace BookingApp.Controllers.Admin
                 var category = new Category
                 {
                     ImageUrl = parameter.ImageUrl,
+                    Alt = parameter.Name,
                     ParentCategoryId = parameter.ParentId,
                     Slug = parameter.Slug,
                     CategoryName = parameter.Name
@@ -205,7 +206,9 @@ namespace BookingApp.Controllers.Admin
                 {
                     Id = x.Id,
                     ImageUrl = x.ImageUrl,
+                    Alt = x.Alt,
                     Children = InitTreeData(x.Id, categories.Where(a => !a.ParentId.Equals(parentId)).ToList()),
+                    Slug = x.Slug,
                     Name = x.Name
                 }).ToList();
         }

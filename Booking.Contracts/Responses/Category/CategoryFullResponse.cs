@@ -6,6 +6,7 @@ namespace Booking.Contracts.Responses.Category
     {
         public Guid Id { get; set; }
         public string ImageUrl { get; set; }
+        public string Alt { get; set; }
         public List<CategoryFullResponse> Children { get; set; }
 
         [Display(Name = "Слаг")] 

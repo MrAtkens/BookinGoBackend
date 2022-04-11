@@ -5,6 +5,7 @@ namespace Booking.Contracts.Responses
     {
         public Guid Id { get; set; }
         public string ImageUrl { get; set; }
+        public string Alt { get; set; }
         public string Name { get; set; }
         public string Slug { get; set; }
         public Guid ParentId { get; set; }
