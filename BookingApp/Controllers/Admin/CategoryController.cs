@@ -40,6 +40,8 @@ namespace BookingApp.Controllers.Admin
                         {
                             Id = category.Id,
                             ImageUrl = category.ImageUrl,
+                            Alt = category.Alt,
+                            Slug = category.Slug,
                             ParentId = category.ParentCategoryId,
                             Name = category.CategoryName
                         });
@@ -118,7 +120,6 @@ namespace BookingApp.Controllers.Admin
             try
             {
                
-
                 var parentCategory = await _categoryProvider.FirstOrDefault(x => x.Id.Equals(parameter.ParentId));
                 if (parentCategory is null && !parameter.ParentId.Equals(Guid.Empty))
                 {
@@ -167,6 +168,7 @@ namespace BookingApp.Controllers.Admin
                 }
                 category.ImageUrl = parameter.ImageUrl;
                 category.ParentCategoryId = parameter.ParentId;
+                category.Alt = parameter.Name;
                 category.Slug = parameter.Slug;
                 category.CategoryName = parameter.Name;
                 await _categoryProvider.Edit(category);
